@@ -32,7 +32,7 @@
         android:id="@+id/tvUnreadBadge"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="@drawable/bg_badge_red"
+        android:background="@drawable/bg_card_white"
         android:gravity="center"
         android:text="2"
         android:textColor="@color/white"
@@ -86,7 +86,7 @@
         android:id="@+id/onlineIndicator"
         android:layout_width="12dp"
         android:layout_height="12dp"
-        android:background="@drawable/bg_online_indicator"
+        android:background="@drawable/bg_card_green"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/cvCompanyLogo"
         app:layout_constraintEnd_toEndOf="@id/cvCompanyLogo" />

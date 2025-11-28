@@ -8,18 +8,31 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.kerjain.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home_pelamar" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_lowongan"
         android:name="com.example.kerjain.ui.lowongan.LowonganFragment"
-        android:label="@string/title_dashboard"
+        android:label="Lowongan"
+        tools:layout="@layout/fragment_lowongan_pelamar" />
+
+    <fragment
+        android:id="@+id/navigation_poster"
+        android:name="com.example.kerjain.ui.Poster.PosterFragment"
+        android:label="Poster"
         tools:layout="@layout/fragment_poster_pelamar" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.kerjain.ui.Poster.PosterFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_lowongan_pelamar" />
+        android:id="@+id/navigation_chat"
+        android:name="com.example.kerjain.ui.Chat.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat_pelamar" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.kerjain.ui.Profile.ProfileFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profile_pelamar" />
+
 </navigation>
