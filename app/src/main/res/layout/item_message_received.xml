@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/limitLeft"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:id="@+id/receivedBubble"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/limitLeft"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="@drawable/bg_bubble_received"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvMessageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ini contoh pesan diterima"
+                android:textSize="15sp"
+                android:textColor="@color/textDark"/>
+
+            <TextView
+                android:id="@+id/tvMessageTime"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:32"
+                android:textSize="11sp"
+                android:textColor="@color/textGrey"/>
+        </LinearLayout>
+
+
+        <ImageView
+            android:src="@drawable/vec_tail_triangle"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="bottom|start"
+            android:translationX="-5dp"
+            android:translationY="5dp"
+            app:tint="@color/bubbleReceived" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

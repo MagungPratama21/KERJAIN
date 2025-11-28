@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardPoster"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivPoster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_poster"
+            app:layout_constraintDimensionRatio="3:4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:background="@drawable/gradient_bottom"
+            app:layout_constraintBottom_toBottomOf="@id/ivPoster"
+            app:layout_constraintStart_toStartOf="@id/ivPoster"
+            app:layout_constraintEnd_toEndOf="@id/ivPoster"/>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Aktif"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:background="@drawable/status"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:background="@drawable/bg_circle_white_blur"
+            android:src="@drawable/more_vert"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/bottomInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
+            app:layout_constraintStart_toStartOf="@id/ivPoster"
+            app:layout_constraintEnd_toEndOf="@id/ivPoster"
+            app:layout_constraintBottom_toBottomOf="@id/ivPoster">
+
+            <TextView
+                android:id="@+id/tvJobTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Web Developer"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/eye"
+                    app:tint="#E5E7EB"/>
+
+                <TextView
+                    android:id="@+id/tvViews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="245 views"
+                    android:textColor="#E5E7EB"
+                    android:textSize="11sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="•"
+                    android:layout_marginHorizontal="8dp"
+                    android:textColor="#E5E7EB"/>
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/profile"
+                    app:tint="#E5E7EB"/>
+
+                <TextView
+                    android:id="@+id/tvApplicants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="12 pelamar"
+                    android:textColor="#E5E7EB"
+                    android:textSize="11sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

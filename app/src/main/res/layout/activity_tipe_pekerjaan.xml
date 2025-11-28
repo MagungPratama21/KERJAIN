@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tipepekerjaan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/logoTop"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo"
+            android:src="@drawable/logonama"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgSplash"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:src="@drawable/splash2"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toBottomOf="@id/logoTop"
+            app:layout_constraintBottom_toTopOf="@id/optionsGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.45"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/optionsGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="28dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/chooseTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tipe "
+                android:textSize="16sp"
+                android:textColor="#0F172A"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnpelamar"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Pelamar"
+                android:textAllCaps="false"
+                app:cornerRadius="10dp"
+                app:backgroundTint="#EFF6FF"
+                app:strokeColor="#E6EEF9"
+                android:textColor="#0F172A"
+                android:layout_marginTop="8dp"/>
+
+            <Button
+                android:id="@+id/btnperusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Perusahaan"
+                android:textAllCaps="false"
+                app:cornerRadius="10dp"
+                app:backgroundTint="#FFFFFF"
+                app:strokeColor="#E6EEF9"
+                android:textColor="#0F172A"
+                android:layout_marginTop="12dp"/>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

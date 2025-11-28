@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcomeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true"
+    android:statusBarColor="@android:color/white"
+    tools:context=".WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:src="@drawable/logonama"
+        android:contentDescription="Logo Kerjain"
+        android:layout_marginTop="36dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
+        app:layout_constraintBottom_toTopOf="@id/indicatorLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/viewPager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="24dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/indicatorLayout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kerja Lebih Mudah, Selesai Lebih Cepat"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:id="@+id/subtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cari kerjaan berdasarkan kriteria anda setiap harinya."
+            android:textSize="14sp"
+            android:textColor="#475569"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="6dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/descText"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Sederhana, cepat, dan andal - kerjain mencari kandidat tenaga kerja dan juga menyediakan jenis pekerjaan yang anda cari"
+            android:textSize="13sp"
+            android:textColor="#6B7280"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif" />
+
+        <Button
+            android:id="@+id/btnLanjutkan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Mulai Kerjain"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif-medium"
+            app:cornerRadius="25dp"
+            app:backgroundTint="#2563EB"
+            app:rippleColor="#BBDEFB" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

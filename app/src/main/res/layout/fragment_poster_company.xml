@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerPosterCompany"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA">
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPosterTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Poster Lowongan"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F172A"/>
+
+                <TextView
+                    android:id="@+id/tvPosterSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Kelola poster lowongan perusahaan"
+                    android:textSize="14sp"
+                    android:textColor="#6B7280"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivAnalytics"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/analytics"
+                app:tint="#2563EB"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPosters"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreatePoster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreatePoster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:alpha="0.55"
+            android:src="@drawable/poster"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Belum ada poster"
+            android:textColor="#374151"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Buat poster lowongan untuk menarik kandidat terbaik"
+            android:textColor="#9CA3AF"
+            android:textSize="14sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreatePoster"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:text="Buat Poster"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        app:backgroundTint="#ff5f00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

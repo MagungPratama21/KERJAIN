@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:src="@drawable/back"
+        android:contentDescription="Kembali"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:text="Langkah 1 dari 2"
+            android:textColor="@color/gray_text"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+        <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Buat Akun Pelamar"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Isi data diri Anda"
+        android:textColor="@color/gray_text"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:hint="Username"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/bg_input_round"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_text"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/bg_input_round"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_text"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="No. Telepon"
+        android:inputType="phone"
+        android:imeOptions="actionNext"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/bg_input_round"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_text"
+        app:layout_constraintTop_toBottomOf="@id/etEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:imeOptions="actionNext"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="8dp"
+        android:background="@drawable/bg_input_round"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_text"
+        app:layout_constraintTop_toBottomOf="@id/etPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="Konfirmasi Password"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:drawablePadding="8dp"
+        android:background="@drawable/bg_input_round"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_text"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="28dp"
+        android:text="Lanjut"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue_primary"
+        android:stateListAnimator="@null"
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
