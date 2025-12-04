@@ -55,12 +55,14 @@
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_margin="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
             android:background="@drawable/bg_circle_white"
             android:padding="6dp"
             android:src="@drawable/bookmark"
-            app:tint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:tint="@color/white" />
 
         <LinearLayout
             android:layout_width="0dp"
