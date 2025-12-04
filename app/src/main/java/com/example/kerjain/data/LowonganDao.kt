@@ -7,20 +7,26 @@ import androidx.room.*
 interface LowonganDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(lowongan: Lowongan)
+    fun insert(lowongan: Lowongan)
 
     @Update
-    suspend fun update(lowongan: Lowongan)
+    fun update(lowongan: Lowongan)
 
     @Delete
-    suspend fun delete(lowongan: Lowongan)
+    fun delete(lowongan: Lowongan)
 
     @Query("SELECT * FROM lowongan ORDER BY job_id DESC")
     fun getAllLive(): LiveData<List<Lowongan>>
 
     @Query("SELECT * FROM lowongan ORDER BY job_id DESC")
-    suspend fun getAllSync(): List<Lowongan>
+    fun getAllSync(): List<Lowongan>
 
     @Query("SELECT * FROM lowongan WHERE perusahaan_id = :companyId ORDER BY job_id DESC")
     fun getByPerusahaan(companyId: Int): LiveData<List<Lowongan>>
+
+    @Query("SELECT * FROM lowongan WHERE job_id = :id LIMIT 1")
+    fun getById(id: Int): Lowongan?
+
+    @Query("SELECT * FROM lowongan WHERE category LIKE :category ORDER BY job_id DESC")
+    fun getByCategory(category: String): List<Lowongan>
 }

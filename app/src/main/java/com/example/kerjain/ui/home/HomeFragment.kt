@@ -1,148 +1,160 @@
 package com.example.kerjain.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kerjain.data.AppDatabase
+import com.example.kerjain.data.AppExecutor
+import com.example.kerjain.data.Lowongan
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kerjain.R
+import com.example.kerjain.databinding.FragmentHomePelamarBinding
 
 class HomeFragment : Fragment() {
 
+    private var _binding: FragmentHomePelamarBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var db: AppDatabase
+    private lateinit var executor: AppExecutor
     private lateinit var viewModel: HomeViewModel
 
-    private lateinit var ivProfilePicture: ImageView
-    private lateinit var ivNotification: ImageView
-    private lateinit var etSearch: EditText
-    private lateinit var ivFilter: ImageView
-    private lateinit var cvLocation: View
-    private lateinit var tvLocation: TextView
-    private lateinit var tvLowonganCount: TextView
-    private lateinit var tvLamaranCount: TextView
-    private lateinit var rvJobCategories: RecyclerView
-    private lateinit var rvJobs: RecyclerView
-    private lateinit var tvSeeAll: TextView
-
-    private lateinit var categoryAdapter: JobCategoryAdapter
+    private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var jobAdapter: JobAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home_pelamar, container, false)
-    }
+    ): View {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentHomePelamarBinding.inflate(inflater, container, false)
+        val root = binding.root
 
+        db = AppDatabase.getDatabase(requireContext())
+        executor = AppExecutor()
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        initViews(view)
-        setupRecyclerViews()
-        setupListeners()
-        observeViewModel()
 
-        viewModel.loadCategories()
-        viewModel.loadJobs()
-        viewModel.loadUserStats()
-    }
-
-    private fun initViews(view: View) {
-        ivProfilePicture = view.findViewById(R.id.ivProfilePicture)
-        ivNotification = view.findViewById(R.id.ivNotification)
-        etSearch = view.findViewById(R.id.etSearch)
-        ivFilter = view.findViewById(R.id.ivFilter)
-        cvLocation = view.findViewById(R.id.cvLocation)
-        tvLocation = view.findViewById(R.id.tvLocation)
-        tvLowonganCount = view.findViewById(R.id.tvLowonganCount)
-        tvLamaranCount = view.findViewById(R.id.tvLamaranCount)
-        rvJobCategories = view.findViewById(R.id.rvJobCategories)
-        rvJobs = view.findViewById(R.id.rvJobs)
-        tvSeeAll = view.findViewById(R.id.tvSeeAll)
-    }
-
-    private fun setupRecyclerViews() {
-        categoryAdapter = JobCategoryAdapter { category ->
-            viewModel.filterByCategory(category)
+        categoryAdapter = CategoryAdapter(HomeViewModel.DEFAULT_CATEGORIES) { category ->
+            viewModel.loadByCategory(db, executor, "%$category%")
         }
-        rvJobCategories.apply {
-            layoutManager = GridLayoutManager(context, 4)
+
+        binding.rvJobCategories.apply {
+            layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL, false
+            )
             adapter = categoryAdapter
         }
 
-        jobAdapter = JobAdapter(
-            onJobClick = { job ->
-                // Navigate to job detail
-                // TODO: Navigate to JobDetailActivity
-            },
-            onBookmarkClick = { job ->
-                viewModel.toggleBookmark(job)
-            }
-        )
-        rvJobs.apply {
-            layoutManager = LinearLayoutManager(context)
+        jobAdapter = JobAdapter(mutableListOf()) { lowongan ->
+        }
+
+        binding.rvRecommendedJobs.apply {
+            layoutManager = LinearLayoutManager(requireContext())
             adapter = jobAdapter
-            isNestedScrollingEnabled = false
         }
+
+        viewModel.recommended.observe(viewLifecycleOwner) { list ->
+            jobAdapter.setItems(list)
+        }
+
+        binding.etSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.filterRecommended(s.toString())
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        viewModel.loadRecommended(db, executor)
+
+        return root
     }
 
-    private fun setupListeners() {
-        ivNotification.setOnClickListener {
-            // Navigate to notifications
-            // TODO: Navigate to NotificationsActivity
-        }
-
-        ivFilter.setOnClickListener {
-            // Show filter dialog
-            // TODO: Show FilterDialogFragment
-        }
-
-        cvLocation.setOnClickListener {
-            // Show location picker
-            // TODO: Show LocationPickerDialog
-        }
-
-        tvSeeAll.setOnClickListener {
-            // Navigate to all jobs
-            // TODO: Navigate to LowonganFragment or show all
-        }
-
-        ivProfilePicture.setOnClickListener {
-            // Navigate to profile
-            // TODO: Switch to ProfileFragment
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    private fun observeViewModel() {
-        viewModel.categories.observe(viewLifecycleOwner) { categories ->
-            categoryAdapter.submitList(categories)
+
+    class CategoryAdapter(
+        private val items: List<String>,
+        private val onClick: (String) -> Unit
+    ) : RecyclerView.Adapter<CategoryAdapter.VH>() {
+
+        inner class VH(val binding: com.example.kerjain.databinding.ItemJobKategoryBinding)
+            : RecyclerView.ViewHolder(binding.root) {
+
+            init {
+                binding.root.setOnClickListener {
+                    binding.cbCategory.isChecked = !binding.cbCategory.isChecked
+                    onClick(binding.cbCategory.text.toString())
+                }
+            }
         }
 
-        viewModel.jobs.observe(viewLifecycleOwner) { jobs ->
-            jobAdapter.submitList(jobs)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = com.example.kerjain.databinding.ItemJobKategoryBinding.inflate(
+                inflater, parent, false
+            )
+            return VH(binding)
         }
 
-        viewModel.savedJobsCount.observe(viewLifecycleOwner) { count ->
-            tvLowonganCount.text = count.toString()
+        override fun onBindViewHolder(holder: VH, position: Int) {
+            holder.binding.cbCategory.text = items[position]
         }
 
-        viewModel.applicationsCount.observe(viewLifecycleOwner) { count ->
-            tvLamaranCount.text = count.toString()
+        override fun getItemCount(): Int = items.size
+    }
+
+
+    class JobAdapter(
+        private val items: MutableList<Lowongan>,
+        private val onClick: (Lowongan) -> Unit
+    ) : androidx.recyclerview.widget.RecyclerView.Adapter<JobAdapter.VH>() {
+
+        inner class VH(val binding: com.example.kerjain.databinding.ItemJobcardBinding)
+            : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
+
+            init {
+                binding.root.setOnClickListener {
+                    val pos = adapterPosition
+                    if (pos != RecyclerView.NO_POSITION) {
+                        onClick(items[pos])
+                    }
+                }
+            }
         }
 
-        viewModel.selectedLocation.observe(viewLifecycleOwner) { location ->
-            tvLocation.text = location
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = com.example.kerjain.databinding.ItemJobcardBinding.inflate(
+                inflater, parent, false
+            )
+            return VH(binding)
+        }
+
+        override fun onBindViewHolder(holder: VH, position: Int) {
+            val job = items[position]
+            holder.binding.tvJobTitle.text = job.judul
+            holder.binding.tvCompanyName.text = "Perusahaan #${job.perusahaan_id}"
+            holder.binding.tvLocation.text = job.lokasi
+            holder.binding.tvSalary.text = job.gaji
+        }
+
+        override fun getItemCount(): Int = items.size
+
+        fun setItems(newItems: List<Lowongan>) {
+            items.clear()
+            items.addAll(newItems)
+            notifyDataSetChanged()
         }
     }
 }

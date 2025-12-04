@@ -7,7 +7,7 @@ import androidx.room.*
 interface LamaranDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(lamaran: Lamaran)
+    fun insert(lamaran: Lamaran)
 
     @Query("SELECT * FROM lamaran WHERE pelamar_id = :pelamarId ORDER BY lamaran_id DESC")
     fun getLamaranPelamar(pelamarId: Int): LiveData<List<Lamaran>>

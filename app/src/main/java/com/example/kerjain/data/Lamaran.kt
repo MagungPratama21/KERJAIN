@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 data class Lamaran(
     @PrimaryKey(autoGenerate = true)
     val lamaran_id: Int = 0,
-
     val pelamar_id: Int,
     val job_id: Int,
     val status_lamaran: String,

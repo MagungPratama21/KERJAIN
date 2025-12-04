@@ -8,11 +8,12 @@ data class Lowongan(
     @PrimaryKey(autoGenerate = true)
     val job_id: Int = 0,
 
-    val perusahaan_id: Int,
-    val judul: String,
-    val tipe: String,
-    val lokasi: String,
-    val gaji: String,
-    val deskripsi: String,
-    val tanggal_post: Long
+    val perusahaan_id: Int = 0,
+    val judul: String ,
+    val tipe: String ,
+    val lokasi: String ,
+    val gaji: String ,
+    val deskripsi: String ,
+    val tanggal_post: Long ,
+    val category: String
 )
