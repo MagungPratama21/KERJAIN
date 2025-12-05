@@ -3,6 +3,8 @@ package com.example.kerjain
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kerjain.ui.auth.LoginPelamarActivity
+import com.example.kerjain.ui.auth.LoginperusahaanActivity
 import com.google.android.material.button.MaterialButton
 
 class TipePekerjaanActivity : AppCompatActivity() {

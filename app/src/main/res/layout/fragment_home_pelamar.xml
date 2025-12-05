@@ -48,6 +48,17 @@
                 android:padding="10dp"
                 android:src="@drawable/notifikasi"
                 android:contentDescription="Notifikasi" />
+
+            <ImageView
+                android:id="@+id/ivBookmarkHeader"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:background="@drawable/circle_white"
+                android:src="@drawable/bookmark"
+                android:contentDescription="Bookmark"
+                app:tint="#2563EB"
+                android:layout_marginStart="8dp"/>
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView

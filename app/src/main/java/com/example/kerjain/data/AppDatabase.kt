@@ -11,9 +11,11 @@ import androidx.room.RoomDatabase
         Perusahaan::class,
         Lowongan::class,
         Lamaran::class,
-        Chat::class
+        Chat::class,
+        Bookmark::class,
+        NotificationItem::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -23,6 +25,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun lowonganDao(): LowonganDao
     abstract fun lamaranDao(): LamaranDao
     abstract fun chatDao(): ChatDao
+
+    abstract fun bookmarkDao(): BookmarkDao
+    abstract fun notificationDao(): NotificationDao
 
     companion object {
         @Volatile

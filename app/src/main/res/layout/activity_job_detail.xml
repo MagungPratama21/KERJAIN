@@ -192,12 +192,6 @@
                 android:padding="14dp"
                 android:background="@drawable/bg_salary_highlight">
 
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:src="@drawable/money"
-                    app:tint="#059669" />
-
                 <TextView
                     android:id="@+id/tvSalary"
                     android:layout_width="wrap_content"

@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KERJAIN">
         <activity
+            android:name=".NotifikasiMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookmarkActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home_CompanyActivity"
             android:exported="false" />
         <activity
